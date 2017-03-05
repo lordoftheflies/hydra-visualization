@@ -8,12 +8,33 @@
     <artifactId>visualization-ms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>1.5.2.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>rhino</groupId>
             <artifactId>js</artifactId>
             <version>1.7R2.0</version>
         </dependency>
+
 
     </dependencies>
 
