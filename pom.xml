@@ -17,6 +17,11 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
         </plugins>
     </build>
 
@@ -48,7 +53,23 @@
             <version>1.7.7.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.yannrichet</groupId>
+            <artifactId>JMathPlot</artifactId>
+            <version>1.0.1</version>
+        </dependency>
 
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
