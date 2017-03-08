@@ -15,6 +15,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 /**
@@ -23,6 +24,8 @@ import java.util.stream.Stream;
 @Component
 public class RinoTemplate implements AutoCloseable , InitializingBean {
 
+    private final Logger LOG = Logger.getLogger(RinoTemplate.class.getCanonicalName());
+
     private static ExecutorService executor = Executors.newFixedThreadPool(5);
 
     public class WorkerThread implements Runnable, AutoCloseable {
@@ -30,10 +33,12 @@ public class RinoTemplate implements AutoCloseable , InitializingBean {
         private Object result = null;
 
         public WorkerThread(Map<String, Object> arguments) {
+            LOG.info("New worker thread created.");
             arguments.forEach((key, value) -> globalScope.put(key, globalScope, value));
         }
 
         public void run() {
+            LOG.info("Run application.");
             Main.main(new String[]{});
         }
 
@@ -58,6 +63,7 @@ public class RinoTemplate implements AutoCloseable , InitializingBean {
         globalScope = rhinoContext.initStandardObjects();
         rhinoContext.setOptimizationLevel(9);
         rhinoContext.setLanguageVersion(Context.VERSION_1_8);
+        
     }
 
     public void visualize(Supplier<Stream> supplier, Map<String, Object> arguments) {
