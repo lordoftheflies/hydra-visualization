@@ -1,19 +1,14 @@
-package hu.cherubits.hydra;
+package hu.cherubits.hydra.js;
 
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
-import org.mozilla.javascript.ScriptableObject;
 import org.mozilla.javascript.tools.shell.Main;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
@@ -63,7 +58,7 @@ public class RinoTemplate implements AutoCloseable , InitializingBean {
         globalScope = rhinoContext.initStandardObjects();
         rhinoContext.setOptimizationLevel(9);
         rhinoContext.setLanguageVersion(Context.VERSION_1_8);
-        
+
     }
 
     public void visualize(Supplier<Stream> supplier, Map<String, Object> arguments) {
